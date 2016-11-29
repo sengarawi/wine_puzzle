@@ -14,5 +14,5 @@ $rdObj = new ReadFile();
 
 $readfile = $rdObj->readFileFromSystem($filename);
 
-print_r($readfile);
+//print_r($readfile);
 echo "file read success";

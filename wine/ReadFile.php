@@ -51,9 +51,9 @@ class ReadFile {
                 //print_r($data_array);
                 //die('exit');
 //uncomment below line to break loop
-//                if(count($person_array)>1000){
-//                    break;
-//                }
+                if(count($person_array)>5000){
+                    break;
+                }
                 $person_id = isset($data_array[0]) ? trim($data_array[0]) : null;
                 $wine_id = isset($data_array[1]) ? trim($data_array[1]) : null;
                 if (!in_array($wine_id, $wine_array)) {
@@ -66,15 +66,15 @@ class ReadFile {
             }
             $sold_wine = $this->soldwine($person_wine_test);
             $result_data = ['wine_list' => $wine_array, 'person_list' => $person_array, 'person_wine_list' => $person_wine_test];
-            Log::logInfo('wine', 'total-'.count($wine_array).PHP_EOL.'data-'.print_r($wine_array, true));
-            Log::logInfo('person', 'total-'.count($person_array).PHP_EOL.'data-'.print_r($person_array, true));
-            Log::logInfo('person_wine_list', 'total-'.count($person_wine_test).PHP_EOL.'data-'.print_r($person_wine_test, true));
+            //Log::logInfo('wine', 'total-'.count($wine_array).PHP_EOL.'data-'.print_r($wine_array, true));
+            //Log::logInfo('person', 'total-'.count($person_array).PHP_EOL.'data-'.print_r($person_array, true));
+            //Log::logInfo('person_wine_list', 'total-'.count($person_wine_test).PHP_EOL.'data-'.print_r($person_wine_test, true));
         }
         if ($file) {
             fclose($file);
         }
 
-        Log::logInfo('log', 'file read done -' . $filename);
+        //Log::logInfo('log', 'file read done -' . $filename);
     }
     /*
      * deprecated not in use
@@ -117,7 +117,7 @@ class ReadFile {
             }
         }
         $this->createFinalFile($sold_wine, $final_array);
-        Log::logInfo('final_list', 'total wine sold-'.count($sold_wine).PHP_EOL.'person wine-'.print_r($final_array, true));
+        //Log::logInfo('final_list', 'total wine sold-'.count($sold_wine).PHP_EOL.'person wine-'.print_r($final_array, true));
         
     }
     /**
