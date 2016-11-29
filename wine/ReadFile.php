@@ -51,9 +51,9 @@ class ReadFile {
                 //print_r($data_array);
                 //die('exit');
 //uncomment below line to break loop
-                if(count($person_array)>5000){
-                    break;
-                }
+//                if(count($person_array)>5000){
+//                    break;
+//                }
                 $person_id = isset($data_array[0]) ? trim($data_array[0]) : null;
                 $wine_id = isset($data_array[1]) ? trim($data_array[1]) : null;
                 if (!in_array($wine_id, $wine_array)) {
