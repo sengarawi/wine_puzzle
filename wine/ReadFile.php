@@ -50,9 +50,10 @@ class ReadFile {
                 $data_array = preg_split('/\s+/', $line);
                 //print_r($data_array);
                 //die('exit');
-                if(count($person_array)>1000){
-                    break;
-                }
+//uncomment below line to break loop
+//                if(count($person_array)>1000){
+//                    break;
+//                }
                 $person_id = isset($data_array[0]) ? trim($data_array[0]) : null;
                 $wine_id = isset($data_array[1]) ? trim($data_array[1]) : null;
                 if (!in_array($wine_id, $wine_array)) {
@@ -75,7 +76,9 @@ class ReadFile {
 
         Log::logInfo('log', 'file read done -' . $filename);
     }
-
+    /*
+     * deprecated not in use
+     */
     public function segregateWineData($data) {
         $wine_array = [];
         $person_array = [];
@@ -94,7 +97,10 @@ class ReadFile {
         $result_data = ['wine_list' => $wine_array, 'person_list' => $person_array, 'person_wine_list' => $person_wine_test];
         return $result_data;
     }
-    
+    /**
+     * generate final result array from picked data
+     * @param type $data
+     */
     public function soldwine($data){
         $sold_wine = [];
         $final_array = [];
@@ -114,6 +120,11 @@ class ReadFile {
         Log::logInfo('final_list', 'total wine sold-'.count($sold_wine).PHP_EOL.'person wine-'.print_r($final_array, true));
         
     }
+    /**
+     * generate result file after getting final data
+     * @param type $wine_list
+     * @param type $final_list
+     */
     public function createFinalFile($wine_list, $final_list){
         $filename = 'result.txt';
         $file = fopen($filename, 'wb');
